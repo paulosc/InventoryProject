@@ -10,7 +10,7 @@ Open your terminal and navigate to the project directory. Run the following comm
 Access the Application
 Once the containers are up and running, you can access the application by visiting the following URL in your web browser:
 
-***https://localhost:80/***
+***http://localhost:80/***
 
 Notes
 Ensure that Docker and Docker Compose are installed and running on your machine.
