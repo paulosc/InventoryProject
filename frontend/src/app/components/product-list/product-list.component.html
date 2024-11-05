@@ -1,0 +1,53 @@
+<div>
+    <h2>Product List</h2>
+  
+    <div>
+      <label for="filterName">Name:</label>
+      <input id="filterName" [(ngModel)]="filterName" placeholder="Filter by name" />
+  
+      <label for="filterAvailable">Available:</label>
+      <select id="filterAvailable" [(ngModel)]="filterAvailable">
+        <option [ngValue]="undefined">All</option>
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+  
+      <button (click)="applyFilters()">Apply Filters</button>
+    </div>
+  
+    <button (click)="createProduct()">Create New Product</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Category Path</th>
+          <th>Available</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productPage.products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.available ? 'Yes' : 'No' }}</td>
+          <td>
+            <button (click)="deleteProduct(product.id)">Delete</button>
+            <a [routerLink]="['/edit', product.id]">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div>
+      Page {{ page + 1 }} of {{ totalPages }}
+    </div>
+  
+    <button (click)="previousPage()" [disabled]="page === 0">Previous</button>
+    <button (click)="nextPage()" [disabled]="page === totalPages - 1">Next</button>
+  </div>
+  
